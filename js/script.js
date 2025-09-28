@@ -2,83 +2,77 @@
 let tweets = [
     {
         id: 1,
-        author: "Canaltech",
-        handle: "@canaltech",
+        author: "Laitzkado",
+        handle: "@KauaLeitzke",
         time: "Sep 26",
-        text: "Mario Kart World vs Sonic Racing CrossWorks: qual é o melhor? canaltech.com.br/games/mario-ka...",
+        text: "Alguém me dá uma makita? <3",
         likes: 1250,
         retweets: 320,
         comments: 89,
-        avatar: "https://i.pravatar.cc/40?img=10",
+        avatar: "/img/leitzkado.png",
         liked: false,
         retweeted: false
     },
     {
         id: 2,
-        author: "Cartos Jhonne",
-        handle: "@CartosJhonn91052",
+        author: "Paulada",
+        handle: "@PauloHQ",
         time: "2h",
-        text: "Acabei de terminar de assistir a nova série na Netflix e estou impressionado! A atuação é incrível e o roteiro te prende do início ao fim. #Netflix #Series",
+        text: "Doando makita véia...",
         likes: 42,
         retweets: 15,
         comments: 8,
-        avatar: "https://i.pravatar.cc/40?img=11",
+        avatar: "/img/paulada.png",
         liked: false,
         retweeted: false
     },
     {
         id: 3,
-        author: "Tech News",
-        handle: "@TechUpdates",
+        author: "Random",
+        handle: "@RandonzinhoSilva",
         time: "4h",
-        text: "Novo framework JavaScript promete revolucionar o desenvolvimento web. O que vocês acham? #JavaScript #WebDev",
+        text: "Yasuo melhor hero",
         likes: 128,
         retweets: 64,
         comments: 32,
-        avatar: "https://i.pravatar.cc/40?img=6",
+        avatar: "/img/ramdom.png",
         liked: false,
         retweeted: false
     },
     {
         id: 4,
-        author: "Web Designer",
-        handle: "@DesignMaster",
+        author: "Predo",
+        handle: "@Pedro",
         time: "6h",
-        text: "Dica do dia: Sempre considere acessibilidade em seus designs. Um bom design é um design inclusivo! #design #acessibilidade",
+        text: "Sukuna sola gojo ☝🤓",
         likes: 89,
         retweets: 23,
         comments: 12,
-        avatar: "https://i.pravatar.cc/40?img=7",
+        avatar: "/img/predo.png",
         liked: false,
         retweeted: false
     },
     {
         id: 5,
-        author: "Gamer Pro",
-        handle: "@ProGamerBR",
+        author: "Aleatorio",
+        handle: "@AleatorioSilvestre",
         time: "1d",
-        text: "Acabei de conseguir uma vitória épica no novo jogo! A emoção foi tanta que quase caí da cadeira 😂 #Gaming #Victory",
+        text: "Alguem PT? sou main Hanabi",
         likes: 245,
         retweets: 78,
         comments: 45,
-        avatar: "https://i.pravatar.cc/40?img=8",
+        avatar: "/img/aleatorio.png",
         liked: false,
         retweeted: false
     },
-    {
-        id: 6,
-        author: "Food Lover",
-        handle: "@FoodieAdventures",
-        time: "1d",
-        text: "Experimentei um restaurante novo hoje e a comida estava divina! Recomendo a todos que passarem por aqui. #Food #Restaurant",
-        likes: 67,
-        retweets: 12,
-        comments: 9,
-        avatar: "https://i.pravatar.cc/40?img=9",
-        liked: false,
-        retweeted: false
-    }
 ];
+
+// Seu usuário fixo
+const myUser ={
+    author: "Carlos Jhonne",
+    handle: "@Jones",
+    avatar: "/img/jone.png"
+};
 
 // Elementos DOM
 const tweetText = document.getElementById('tweet-text');
@@ -92,9 +86,21 @@ const tweetModal = document.getElementById('tweet-modal');
 const closeModal = document.querySelector('.close-modal');
 const tweetBtn = document.querySelector('.tweet-btn');
 
+// Atualizar informações do usuário no sidebar
+function updateUserInfo() {
+    const userAvatar = document.querySelector('.user-avatar');
+    const userName = document.querySelector('.user-name');
+    const userHandle = document.querySelector('.user-handle');
+    
+    if (userAvatar) userAvatar.src = myUser.avatar;
+    if (userName) userName.textContent = myUser.author;
+    if (userHandle) userHandle.textContent = myUser.handle;
+}
+
 // Inicializar feed
 document.addEventListener('DOMContentLoaded', function() {
     renderTweets();
+    updateUserInfo();
     
     // Configurar eventos para o compositor de tweet principal
     setupTweetComposer(tweetText, postTweetBtn, charCount);
@@ -217,7 +223,7 @@ function createTweetElement(tweet) {
     
     tweetDiv.innerHTML = `
         <div class="tweet-avatar">
-            <img src="${tweet.avatar}" alt="Avatar de ${tweet.author}">
+            <img src="${tweet.avatar}" alt="Avatar de ${tweet.author}" onerror="this.src='/img/default-avatar.png'">
         </div>
         <div class="tweet-content">
             <div class="tweet-header">
@@ -286,14 +292,14 @@ function formatTweetText(text) {
 function addNewTweet(text) {
     const newTweet = {
         id: tweets.length + 1,
-        author: "Usuário",
-        handle: "@usuario",
+        author: myUser.author,
+        handle: myUser.handle,
         time: "Agora",
         text: text,
         likes: 0,
         retweets: 0,
         comments: 0,
-        avatar: "https://i.pravatar.cc/40",
+        avatar: myUser.avatar,
         liked: false,
         retweeted: false
     };
