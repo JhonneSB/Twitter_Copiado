@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X / Twitter Clone</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Esquerda -->
+        <div class="sidebar-left">
+            <div class="logo">
+                <i class="fab fa-x-twitter"></i>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Página Inicial</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-search"></i>
+                    <span>Explorar</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Notificações</span>
+                    <span class="notification-badge">3</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Mensagens</span>
+                    <span class="notification-badge">1</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Itens Salvos</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Perfil</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-ellipsis-h"></i>
+                    <span>Mais</span>
+                </a>
+            </nav>
+            <button class="tweet-btn">
+                <span class="btn-text">Postar</span>
+                <i class="fas fa-feather-alt btn-icon"></i>
+            </button>
+            <div class="user-profile">
+                <img src="https://i.pravatar.cc/40" alt="Avatar do usuário">
+                <div class="user-info">
+                    <span class="username">Usuário</span>
+                    <span class="user-handle">@usuario</span>
+                </div>
+                <i class="fas fa-ellipsis-h"></i>
+            </div>
+        </div>
+
+        <!-- Feed Principal -->
+        <div class="main-content">
+            <div class="feed-header">
+                <h2>Página Inicial</h2>
+                <div class="feed-toggle">
+                    <button class="toggle-btn active">Para você</button>
+                    <button class="toggle-btn">Seguindo</button>
+                </div>
+            </div>
+            
+            <div class="tweet-composer">
+                <div class="composer-avatar">
+                    <img src="https://i.pravatar.cc/40" alt="Avatar do usuário">
+                </div>
+                <div class="composer-input">
+                    <textarea placeholder="O que está acontecendo?" id="tweet-text"></textarea>
+                    <div class="composer-actions">
+                        <div class="action-icons">
+                            <i class="fas fa-image" title="Mídia"></i>
+                            <i class="fas fa-poll" title="Enquete"></i>
+                            <i class="fas fa-smile" title="Emoji"></i>
+                            <i class="fas fa-calendar-alt" title="Agendar"></i>
+                            <i class="fas fa-map-marker-alt" title="Localização"></i>
+                        </div>
+                        <div class="action-right">
+                            <span class="char-count" id="char-count">280</span>
+                            <button class="tweet-submit" id="post-tweet" disabled>Postar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feed" id="tweet-feed">
+                <!-- Tweets serão adicionados aqui via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Sidebar Direita -->
+        <div class="sidebar-right">
+            <div class="search-box">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar no X">
+                </div>
+            </div>
+            
+            <div class="trending">
+                <h3>O que está acontecendo</h3>
+                <div class="trend-item">
+                    <span class="category">Tendência em Brasil</span>
+                    <span class="trend-name">#JavaScript</span>
+                    <span class="tweet-count">15.2 mil Tweets</span>
+                </div>
+                <div class="trend-item">
+                    <span class="category">Tendência em Brasil</span>
+                    <span class="trend-name">#CSS</span>
+                    <span class="tweet-count">8.7 mil Tweets</span>
+                </div>
+                <div class="trend-item">
+                    <span class="category">Tendência em Tecnologia</span>
+                    <span class="trend-name">Web Development</span>
+                    <span class="tweet-count">5.3 mil Tweets</span>
+                </div>
+                <a href="#" class="show-more">Mostrar mais</a>
+            </div>
+            
+            <div class="who-to-follow">
+                <h3>Quem seguir</h3>
+                <div class="follow-suggestion">
+                    <img src="https://i.pravatar.cc/40?img=1" alt="Avatar">
+                    <div class="user-details">
+                        <span class="username">Elon Musk</span>
+                        <span class="user-handle">@elonmusk</span>
+                    </div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+                <div class="follow-suggestion">
+                    <img src="https://i.pravatar.cc/40?img=2" alt="Avatar">
+                    <div class="user-details">
+                        <span class="username">Mark Zuckerberg</span>
+                        <span class="user-handle">@zuck</span>
+                    </div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+                <div class="follow-suggestion">
+                    <img src="https://i.pravatar.cc/40?img=3" alt="Avatar">
+                    <div class="user-details">
+                        <span class="username">Bill Gates</span>
+                        <span class="user-handle">@BillGates</span>
+                    </div>
+                    <button class="follow-btn">Seguir</button>
+                </div>
+                <a href="#" class="show-more">Mostrar mais</a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Termos de Serviço</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Política de Cookies</a>
+                <a href="#">Acessibilidade</a>
+                <a href="#">Informações de anúncios</a>
+                <a href="#">Mais</a>
+                <span>© 2023 X Corp.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para criar tweet -->
+    <div class="modal" id="tweet-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="composer-avatar">
+                    <img src="https://i.pravatar.cc/40" alt="Avatar do usuário">
+                </div>
+                <div class="composer-input">
+                    <textarea placeholder="O que está acontecendo?" id="modal-tweet-text"></textarea>
+                    <div class="composer-actions">
+                        <div class="action-icons">
+                            <i class="fas fa-image"></i>
+                            <i class="fas fa-poll"></i>
+                            <i class="fas fa-smile"></i>
+                            <i class="fas fa-calendar-alt"></i>
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="action-right">
+                            <span class="char-count" id="modal-char-count">280</span>
+                            <button class="tweet-submit" id="modal-post-tweet" disabled>Postar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
